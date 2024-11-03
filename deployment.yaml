@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealplannerapp
+  labels:
+    app: mealplannerapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealplannerapp
+  # pod spec begins here
+  template:
+    metadata:
+      labels:
+        app: mealplannerapp
+    spec:
+      containers:
+        - name: mealplannerapp
+          image: registry.digitalocean.com/cc8/meal_planner_app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
